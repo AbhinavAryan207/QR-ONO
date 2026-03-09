@@ -166,23 +166,23 @@ export default function PlayPage() {
     return (
       <CenteredCard>
         <div className="text-center">
-          <span className="font-orbitron text-5xl text-neon-cyan block mb-4 animate-glow-pulse">◈</span>
-          <h2 className="font-cinzel text-2xl text-white mb-3">Authentication Required</h2>
-          <p className="font-manrope text-white/50 text-sm mb-6">
+          <span className="font-space text-5xl text-white/50 block mb-6">◈</span>
+          <h2 className="font-inter font-light tracking-[0.2em] uppercase text-xl text-white mb-4">Authentication Required</h2>
+          <p className="font-inter font-light text-white/50 text-sm mb-8 leading-relaxed">
             You need to be logged in to scan QR codes and earn points.
           </p>
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-4">
             <button
-              className="btn-solid-cyan w-full"
+              className="w-full bg-white text-black font-inter text-sm tracking-[0.2em] font-medium py-4 rounded-xl hover:bg-white/90 transition-all shadow-[0_0_20px_rgba(255,255,255,0.2)]"
               onClick={() => navigate(`/login?redirect=${encodeURIComponent(window.location.href)}`)}
             >
-              Login
+              LOGIN
             </button>
             <button
-              className="btn-neon-cyan w-full"
+              className="w-full glass-card-celestial text-white font-inter text-sm tracking-[0.2em] font-medium py-4 rounded-xl hover:bg-white/10 transition-colors"
               onClick={() => navigate(`/register?redirect=${encodeURIComponent(window.location.href)}`)}
             >
-              Register
+              REGISTER
             </button>
           </div>
         </div>
@@ -195,19 +195,18 @@ export default function PlayPage() {
       <CenteredCard>
         <div className="text-center">
           <span
-            className="font-orbitron text-5xl text-pink-neon block mb-4"
-            style={{ textShadow: '0 0 20px rgba(232,67,147,0.8)' }}
+            className="font-space text-5xl text-white/50 block mb-6"
           >⊗</span>
-          <h2 className="font-cinzel text-2xl text-white mb-3">Already Scanned</h2>
-          <p className="font-manrope text-white/50 text-sm mb-6">
+          <h2 className="font-inter font-light tracking-[0.2em] uppercase text-xl text-white mb-4">Already Scanned</h2>
+          <p className="font-inter font-light text-white/50 text-sm mb-8 leading-relaxed">
             You already scanned this QR code. Each code can only be used once per hunter.
           </p>
-          <div className="flex flex-col gap-3">
-            <button className="btn-neon-cyan w-full" onClick={() => navigate('/leaderboard')}>
-              View Leaderboard
+          <div className="flex flex-col gap-4">
+            <button className="w-full bg-white text-black font-inter text-sm tracking-[0.2em] font-medium py-4 rounded-xl hover:bg-white/90 transition-all shadow-[0_0_20px_rgba(255,255,255,0.2)]" onClick={() => navigate('/leaderboard')}>
+              VIEW LEADERBOARD
             </button>
-            <button className="btn-neon-pink w-full" onClick={() => navigate('/')}>
-              Back to Home
+            <button className="w-full glass-card-celestial text-white font-inter text-sm tracking-[0.2em] font-medium py-4 rounded-xl hover:bg-white/10 transition-colors" onClick={() => navigate('/')}>
+              RETURN HOME
             </button>
           </div>
         </div>
@@ -219,11 +218,11 @@ export default function PlayPage() {
     return (
       <CenteredCard>
         <div className="text-center">
-          <span className="font-orbitron text-5xl text-pink-neon block mb-4">⚠</span>
-          <h2 className="font-cinzel text-2xl text-white mb-3">Error</h2>
-          <p className="font-manrope text-white/50 text-sm mb-6">{message}</p>
-          <button className="btn-neon-cyan w-full" onClick={() => navigate('/')}>
-            Back to Home
+          <span className="font-space text-5xl text-red-500/50 block mb-6">⚠</span>
+          <h2 className="font-inter font-light tracking-[0.2em] uppercase text-xl text-white mb-4">Error</h2>
+          <p className="font-inter font-light text-white/50 text-sm mb-8 leading-relaxed">{message}</p>
+          <button className="w-full bg-white text-black font-inter text-sm tracking-[0.2em] font-medium py-4 rounded-xl hover:bg-white/90 transition-all shadow-[0_0_20px_rgba(255,255,255,0.2)]" onClick={() => navigate('/')}>
+            RETURN HOME
           </button>
         </div>
       </CenteredCard>
@@ -237,57 +236,44 @@ export default function PlayPage() {
           className="fixed top-1/3 left-1/2 -translate-x-1/2 w-80 h-80 rounded-full pointer-events-none"
           style={{
             background: isCorrect
-              ? 'radial-gradient(circle, rgba(74,222,128,0.15), transparent 70%)'
-              : 'radial-gradient(circle, rgba(232,67,147,0.15), transparent 70%)',
+              ? 'radial-gradient(circle, rgba(255,255,255,0.1), transparent 70%)'
+              : 'radial-gradient(circle, rgba(255,100,100,0.1), transparent 70%)',
             filter: 'blur(40px)',
           }}
         />
-        <div className="relative w-full max-w-md mx-auto animate-slide-up">
-          {/* Token badge - hidden on small screens to save space */}
-          <div className="hidden sm:inline-flex glass-card p-2 px-4 items-center gap-2 rounded-full border-white/10 mb-4">
-            <span className="font-orbitron text-xs text-white/30 truncate max-w-[200px]">
-              TOKEN: {token}
-            </span>
-          </div>
-
+        <div className="relative w-full max-w-md mx-auto animate-slide-up mt-8">
           <div
-            className={`glass-card relative p-6 sm:p-8 text-center corner-decoration ${isCorrect ? 'border-green-400/20' : 'border-pink-neon/20'}`}
-            style={{ boxShadow: isCorrect ? '0 0 30px rgba(74,222,128,0.1)' : '0 0 30px rgba(232,67,147,0.1)' }}
+            className={`glass-card-celestial relative p-8 text-center ${isCorrect ? 'border-white/20' : 'border-red-500/30'}`}
           >
             <div className="absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
             {/* Result icon */}
             <div
-              className="text-6xl mb-4 font-orbitron"
-              style={isCorrect
-                ? { color: '#4ade80', textShadow: '0 0 30px rgba(74,222,128,0.8)' }
-                : { color: '#e84393', textShadow: '0 0 30px rgba(232,67,147,0.8)' }}
+              className={`text-6xl mb-6 font-space ${isCorrect ? 'text-white' : 'text-red-400'}`}
+              style={isCorrect ? { textShadow: '0 0 30px rgba(255,255,255,0.5)' } : { textShadow: '0 0 30px rgba(255,0,0,0.4)' }}
             >
               {isCorrect ? '✓' : '✗'}
             </div>
 
-            <h2 className="font-cinzel text-2xl text-white mb-2">
-              {isCorrect ? 'Correct!' : 'Wrong Answer'}
+            <h2 className="font-inter font-light tracking-[0.2em] uppercase text-2xl text-white mb-2">
+              {isCorrect ? 'Verified' : 'Incorrect'}
             </h2>
 
             {/* Score delta */}
-            <div className="flex items-center justify-center gap-2 mb-4">
+            <div className="flex items-center justify-center gap-2 mb-8">
               <span
-                className="font-orbitron text-3xl font-bold"
-                style={isCorrect
-                  ? { color: '#4ade80', textShadow: '0 0 15px rgba(74,222,128,0.6)' }
-                  : { color: '#e84393', textShadow: '0 0 15px rgba(232,67,147,0.6)' }}
+                className={`font-space text-4xl font-light ${isCorrect ? 'text-white' : 'text-red-400'}`}
               >
                 {scoreChange > 0 ? `+${scoreChange}` : scoreChange}
               </span>
-              <span className="font-manrope text-white/40 text-sm">points</span>
+              <span className="font-inter font-light text-[10px] tracking-[0.3em] uppercase text-white/40">points</span>
             </div>
 
             {/* Reveal correct answer when wrong */}
             {!isCorrect && question && (
-              <div className="mb-4 px-4 py-3 rounded-lg border border-green-400/20 bg-green-400/5 text-left">
-                <p className="font-manrope text-xs text-white/40 mb-1 uppercase tracking-widest">Correct Answer</p>
-                <p className="font-manrope text-sm text-green-300">
+              <div className="mb-8 px-4 py-4 rounded-xl border border-white/10 bg-white/5 text-left">
+                <p className="font-inter font-light text-[10px] text-white/40 mb-2 uppercase tracking-[0.2em]">Correct Alignment</p>
+                <p className="font-inter font-light text-sm text-white/80">
                   {OPTION_LABELS[question.correct]}. {question.options[question.correct]}
                 </p>
               </div>
@@ -295,23 +281,20 @@ export default function PlayPage() {
 
             {/* Total score */}
             {newScore !== null && (
-              <div className="mb-6 px-4 py-3 rounded-lg border border-cyan-neon/20 bg-cyan-neon/5">
-                <p className="font-manrope text-xs text-white/40 uppercase tracking-widest mb-1">Total Score</p>
-                <p
-                  className="font-orbitron text-2xl text-cyan-neon"
-                  style={{ textShadow: '0 0 10px rgba(77,216,230,0.5)' }}
-                >
-                  {newScore} pts
+              <div className="mb-8 px-4 py-4 rounded-xl border border-white/20 bg-white/10">
+                <p className="font-inter font-light text-[10px] text-white/40 uppercase tracking-[0.2em] mb-2">New Rating</p>
+                <p className="font-space font-light text-3xl text-white">
+                  {newScore} <span className="text-sm">pts</span>
                 </p>
               </div>
             )}
 
-            <div className="flex flex-col gap-3">
-              <button className="btn-neon-cyan w-full" onClick={() => navigate('/leaderboard')}>
-                View Leaderboard
+            <div className="flex flex-col gap-4">
+              <button className="w-full bg-white text-black font-inter text-sm tracking-[0.2em] font-medium py-4 rounded-xl hover:bg-white/90 transition-all shadow-[0_0_20px_rgba(255,255,255,0.2)]" onClick={() => navigate('/leaderboard')}>
+                VIEW LEADERBOARD
               </button>
-              <button className="btn-neon-pink w-full" onClick={() => navigate('/')}>
-                Back to Home
+              <button className="w-full glass-card-celestial text-white font-inter text-sm tracking-[0.2em] font-medium py-4 rounded-xl hover:bg-white/10 transition-colors" onClick={() => navigate('/')}>
+                RETURN HOME
               </button>
             </div>
           </div>
@@ -329,14 +312,14 @@ export default function PlayPage() {
       />
       <div className="w-full max-w-lg mx-auto">
         {/* Token status badges */}
-        <div className="flex items-center gap-2 mb-4">
-          <div className="glass-card px-3 py-1.5 inline-flex items-center gap-2 rounded-full border-white/5">
-            <div className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-            <span className="font-orbitron text-xs text-white/30">QR ACTIVE</span>
+        <div className="flex items-center justify-between mb-6 border-b border-white/10 pb-4">
+          <div className="glass-card-celestial px-4 py-2 inline-flex items-center gap-3 rounded-full">
+            <div className="w-1.5 h-1.5 rounded-full bg-white animate-pulse shadow-[0_0_10px_rgba(255,255,255,0.8)]" />
+            <span className="font-inter font-light text-[9px] tracking-[0.2em] text-white/60 uppercase">Node Linked</span>
           </div>
-          <div className="glass-card px-3 py-1.5 inline-flex items-center gap-2 rounded-full border-white/5">
-            <span className="font-orbitron text-xs text-white/20 truncate max-w-[140px]">
-              {token?.substring(0, 12)}…
+          <div className="glass-card-celestial px-4 py-2 inline-flex items-center gap-2 rounded-full border border-white/5 opacity-50">
+            <span className="font-inter font-light text-[9px] tracking-[0.2em] text-white/40 truncate max-w-[100px] uppercase">
+              {token?.substring(0, 8)}…
             </span>
           </div>
         </div>
@@ -383,14 +366,14 @@ function LoadingScreen({ text }) {
   return (
     <div className="min-h-screen flex items-center justify-center">
       <div className="text-center">
-        <div className="relative w-16 h-16 mx-auto mb-4">
-          <div className="absolute inset-0 rounded-full border-2 border-cyan-neon/20" />
+        <div className="relative w-16 h-16 mx-auto mb-6">
+          <div className="absolute inset-0 rounded-full border border-white/20" />
           <div
-            className="absolute inset-0 rounded-full border-t-2 border-cyan-neon animate-spin"
+            className="absolute inset-0 rounded-full border-t border-white/80 animate-spin"
             style={{ animationDuration: '1s' }}
           />
         </div>
-        <p className="font-orbitron text-sm text-cyan-neon tracking-widest">{text}</p>
+        <p className="font-inter font-light text-[10px] text-white tracking-[0.4em] uppercase">{text}</p>
       </div>
     </div>
   )
@@ -399,10 +382,10 @@ function LoadingScreen({ text }) {
 function CenteredCard({ children }) {
   return (
     <div className="min-h-screen flex items-center justify-center px-4 scanline-bg">
-        <div className="glass-card-cyan relative p-6 sm:p-8 max-w-md w-full corner-decoration animate-slide-up">
-        <div className="absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-cyan-neon/50 to-transparent" />
+      <div className="glass-card-celestial relative p-8 max-w-md w-full animate-slide-up">
+        <div className="absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
         {children}
-        <div className="absolute bottom-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-pink-neon/30 to-transparent" />
+        <div className="absolute bottom-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
       </div>
     </div>
   )

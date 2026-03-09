@@ -169,8 +169,8 @@ export default function ScanPage() {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="relative w-10 h-10">
-          <div className="absolute inset-0 rounded-full border-2 border-cyan-neon/20" />
-          <div className="absolute inset-0 rounded-full border-t-2 border-cyan-neon animate-spin" />
+          <div className="absolute inset-0 rounded-full border border-white/20" />
+          <div className="absolute inset-0 rounded-full border-t border-white/80 animate-spin" />
         </div>
       </div>
     )
@@ -194,50 +194,52 @@ export default function ScanPage() {
       {/* Camera viewport — always in DOM so refs work */}
       <div className="relative w-full max-w-sm">
         <div
-          className="glass-card-cyan rounded-2xl overflow-hidden bg-black"
-          style={{ aspectRatio: '1 / 1', position: 'relative' }}
+          className="glass-card-celestial rounded-2xl overflow-hidden bg-black/40 border border-white/20 p-2"
+          style={{ aspectRatio: '1 / 1', position: 'relative', boxShadow: '0 0 40px rgba(255,255,255,0.05)' }}
         >
           {/* Native video element — always in DOM, overlays cover it when not scanning */}
-          <video
-            ref={videoRef}
-            playsInline
-            muted
-            autoPlay
-            className="absolute inset-0 w-full h-full object-cover"
-          />
+          <div className="relative w-full h-full rounded-xl overflow-hidden bg-black isolation-auto">
+            <video
+              ref={videoRef}
+              playsInline
+              muted
+              autoPlay
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+          </div>
 
           {/* Hidden canvas for jsQR frame capture */}
           <canvas ref={canvasRef} className="hidden" />
 
           {/* "Ready" state — tap to open camera */}
           {phase === 'ready' && (
-            <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-black/80">
+            <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-black/60 backdrop-blur-sm rounded-xl m-2">
               <div
-                className="w-16 h-16 rounded-2xl border-2 border-cyan-neon/60 flex items-center justify-center"
-                style={{ boxShadow: '0 0 20px rgba(77,216,230,0.3)' }}
+                className="w-16 h-16 rounded-2xl border border-white/40 flex items-center justify-center bg-white/5 transition-colors hover:bg-white/10"
+                style={{ boxShadow: '0 0 20px rgba(255,255,255,0.1)' }}
               >
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#4dd8e6" strokeWidth="1.5">
-                  <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
-                  <circle cx="12" cy="13" r="4"/>
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="1">
+                  <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
+                  <circle cx="12" cy="13" r="4" />
                 </svg>
               </div>
-              <p className="font-manrope text-sm text-white/60 text-center px-4">
-                Tap the button below to open your camera
+              <p className="font-inter font-light text-xs text-white/50 text-center px-4 tracking-[0.1em] uppercase">
+                Tap to open visual interface
               </p>
             </div>
           )}
 
           {/* Scanning overlay */}
           {phase === 'scanning' && (
-            <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
-              <div className="relative w-52 h-52">
-                <span className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-cyan-neon rounded-tl-lg" />
-                <span className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-cyan-neon rounded-tr-lg" />
-                <span className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-cyan-neon rounded-bl-lg" />
-                <span className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-cyan-neon rounded-br-lg" />
+            <div className="absolute inset-0 pointer-events-none flex items-center justify-center m-2">
+              <div className="relative w-52 h-52 opacity-60">
+                <span className="absolute top-0 left-0 w-8 h-8 border-t border-l border-white rounded-tl-lg" />
+                <span className="absolute top-0 right-0 w-8 h-8 border-t border-r border-white rounded-tr-lg" />
+                <span className="absolute bottom-0 left-0 w-8 h-8 border-b border-l border-white rounded-bl-lg" />
+                <span className="absolute bottom-0 right-0 w-8 h-8 border-b border-r border-white rounded-br-lg" />
                 <div
-                  className="absolute left-2 right-2 h-0.5 bg-cyan-neon animate-scan-laser"
-                  style={{ boxShadow: '0 0 8px #4dd8e6, 0 0 16px #4dd8e6' }}
+                  className="absolute left-2 right-2 h-[1px] bg-white/50 animate-scan-laser"
+                  style={{ boxShadow: '0 0 8px rgba(255,255,255,0.8)' }}
                 />
               </div>
             </div>
@@ -245,55 +247,53 @@ export default function ScanPage() {
 
           {/* Processing overlay */}
           {phase === 'processing' && (
-            <div className="absolute inset-0 bg-black/80 flex items-center justify-center">
+            <div className="absolute inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center rounded-xl m-2">
               <div className="text-center">
-                <div className="relative w-12 h-12 mx-auto mb-3">
-                  <div className="absolute inset-0 rounded-full border-2 border-cyan-neon/20" />
-                  <div className="absolute inset-0 rounded-full border-t-2 border-cyan-neon animate-spin" />
+                <div className="relative w-12 h-12 mx-auto mb-4">
+                  <div className="absolute inset-0 rounded-full border border-white/20" />
+                  <div className="absolute inset-0 rounded-full border-t border-white/80 animate-spin" />
                 </div>
-                <p className="font-orbitron text-xs text-cyan-neon tracking-widest">PROCESSING</p>
+                <p className="font-inter font-light text-[10px] text-white tracking-[0.4em] uppercase">DECRYPTING</p>
               </div>
             </div>
           )}
         </div>
 
         {phase === 'scanning' && (
-          <div className="mt-3 flex items-center justify-center gap-2">
-            <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-            <span className="font-orbitron text-xs text-white/50 tracking-widest uppercase">Camera active — hold steady</span>
+          <div className="mt-4 flex items-center justify-center gap-3">
+            <div className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+            <span className="font-inter font-light text-[9px] text-white/50 tracking-[0.3em] uppercase">Lens calibrated — hold steady</span>
           </div>
         )}
       </div>
 
       {/* Action buttons */}
-      <div className="mt-5 w-full max-w-sm flex flex-col gap-3">
+      <div className="mt-6 w-full max-w-sm flex flex-col gap-4">
         {phase === 'ready' && (
           <button
-            className="btn-solid-cyan w-full"
-            style={{ minHeight: '56px', fontSize: '16px' }}
+            className="w-full bg-white text-black font-inter text-sm tracking-[0.2em] font-medium py-4 rounded-xl hover:bg-white/90 transition-all shadow-[0_0_20px_rgba(255,255,255,0.2)]"
             onClick={startCamera}
           >
-            📷&nbsp; Open Camera
+            OPEN CAMERA
           </button>
         )}
 
         {phase === 'scanning' && (
-          <button className="btn-neon-pink w-full" onClick={() => { stopCamera(); navigate('/') }}>
-            Cancel
+          <button className="w-full glass-card-celestial text-white font-inter text-sm tracking-[0.2em] font-medium py-4 rounded-xl hover:bg-white/10 transition-colors" onClick={() => { stopCamera(); navigate('/') }}>
+            CLOSE
           </button>
         )}
 
         {phase === 'error' && (
           <>
             <div
-              className="glass-card border-pink-neon/30 p-5 text-center rounded-2xl"
-              style={{ boxShadow: '0 0 20px rgba(232,67,147,0.1)' }}
+              className="glass-card-celestial border-red-500/20 p-6 text-center rounded-2xl bg-red-500/10"
             >
-              <span className="font-orbitron text-3xl text-pink-neon block mb-3" style={{ textShadow: '0 0 15px rgba(232,67,147,0.8)' }}>⚠</span>
-              <p className="font-manrope text-sm text-white/70 leading-relaxed whitespace-pre-wrap break-all">{errorMsg}</p>
+              <span className="font-space text-3xl text-red-400 block mb-4">⚠</span>
+              <p className="font-inter font-light text-xs text-red-200/80 leading-relaxed whitespace-pre-wrap break-all uppercase tracking-wider">{errorMsg}</p>
             </div>
-            <button className="btn-neon-cyan w-full" onClick={retry}>Try Again</button>
-            <button className="btn-neon-pink w-full" onClick={() => navigate('/')}>Back to Home</button>
+            <button className="w-full bg-white text-black font-inter text-sm tracking-[0.2em] font-medium py-4 rounded-xl shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:bg-white/90 transition-colors" onClick={retry}>RECALIBRATE</button>
+            <button className="w-full glass-card-celestial text-white font-inter text-sm tracking-[0.2em] font-medium py-4 rounded-xl hover:bg-white/10 transition-colors" onClick={() => navigate('/')}>RETURN TO HUB</button>
           </>
         )}
       </div>
