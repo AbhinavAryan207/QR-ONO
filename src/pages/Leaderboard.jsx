@@ -69,27 +69,27 @@ export default function Leaderboard() {
         )}
 
         {/* Full table */}
-        <div className="glass-card-cyan relative animate-slide-up overflow-hidden">
-          <div className="absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-cyan-neon/50 to-transparent" />
+        <div className="glass-card-celestial relative animate-slide-up overflow-hidden">
+          <div className="absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
           {/* Table header */}
-          <div className="grid grid-cols-[40px_1fr_80px] gap-2 px-5 py-3 border-b border-white/5">
-            <span className="font-orbitron text-xs text-white/30 uppercase tracking-widest">#</span>
-            <span className="font-orbitron text-xs text-white/30 uppercase tracking-widest">Hunter</span>
-            <span className="font-orbitron text-xs text-white/30 uppercase tracking-widest text-right">Score</span>
+          <div className="grid grid-cols-[40px_1fr_80px] gap-2 px-5 py-3 border-b border-white/10">
+            <span className="font-inter text-xs font-light text-white/40 uppercase tracking-[0.2em]">#</span>
+            <span className="font-inter text-xs font-light text-white/40 uppercase tracking-[0.2em]">Hunter</span>
+            <span className="font-inter text-xs font-light text-white/40 uppercase tracking-[0.2em] text-right">Score</span>
           </div>
 
           {loading ? (
             <div className="flex items-center justify-center py-16">
               <div className="relative w-10 h-10">
-                <div className="absolute inset-0 rounded-full border-2 border-cyan-neon/20" />
-                <div className="absolute inset-0 rounded-full border-t-2 border-cyan-neon animate-spin" />
+                <div className="absolute inset-0 rounded-full border border-white/20" />
+                <div className="absolute inset-0 rounded-full border-t border-white/80 animate-spin" />
               </div>
             </div>
           ) : rows.length === 0 ? (
             <div className="text-center py-16">
-              <span className="font-orbitron text-4xl text-white/10 block mb-3">◈</span>
-              <p className="font-manrope text-white/30 text-sm">No scores yet. Be the first hunter!</p>
+              <span className="font-space text-4xl text-white/10 block mb-3">◈</span>
+              <p className="font-inter text-white/30 font-light text-sm">No scores yet. Be the first hunter!</p>
             </div>
           ) : (
             <div>
@@ -102,12 +102,12 @@ export default function Leaderboard() {
                   <div
                     key={row.user_id}
                     className={`grid grid-cols-[40px_1fr_80px] gap-2 items-center px-5 py-3.5 border-b border-white/5 last:border-b-0 transition-colors duration-150
-                      ${isMe ? 'bg-cyan-neon/5' : 'hover:bg-white/3'}`}
-                    style={isMe ? { borderLeft: '2px solid rgba(77,216,230,0.6)' } : {}}
+                      ${isMe ? 'bg-white/10' : 'hover:bg-white/5'}`}
+                    style={isMe ? { borderLeft: '2px solid rgba(255,255,255,0.8)' } : {}}
                   >
                     {/* Rank */}
                     <span
-                      className="font-orbitron text-sm font-bold"
+                      className="font-space text-sm font-light"
                       style={{ color, textShadow: glow ? `0 0 10px ${glow}` : 'none' }}
                     >
                       {icon ?? rank}
@@ -116,20 +116,19 @@ export default function Leaderboard() {
                     {/* User */}
                     <div className="flex items-center gap-2 min-w-0">
                       <div
-                        className="w-7 h-7 rounded-md flex items-center justify-center flex-shrink-0 font-orbitron text-xs"
+                        className="w-7 h-7 rounded-md flex items-center justify-center flex-shrink-0 font-inter font-medium text-xs text-black"
                         style={{
-                          background: isMe ? 'rgba(77,216,230,0.15)' : 'rgba(255,255,255,0.05)',
-                          border: isMe ? '1px solid rgba(77,216,230,0.4)' : '1px solid rgba(255,255,255,0.1)',
-                          color: isMe ? '#4dd8e6' : 'rgba(255,255,255,0.4)',
+                          background: isMe ? '#ffffff' : 'rgba(255,255,255,0.1)',
+                          color: isMe ? '#000000' : 'rgba(255,255,255,0.6)',
                         }}
                       >
                         {row.user_id.substring(0, 2).toUpperCase()}
                       </div>
                       <div className="min-w-0">
-                        <p className="font-manrope text-sm text-white/70 truncate">
+                        <p className="font-inter font-light text-sm text-white/80 truncate">
                           {row.user_id.substring(0, 8)}…
                           {isMe && (
-                            <span className="ml-2 font-orbitron text-xs text-cyan-neon">(you)</span>
+                            <span className="ml-2 font-inter text-[10px] tracking-wider text-white/60">(YOU)</span>
                           )}
                         </p>
                       </div>
@@ -137,10 +136,10 @@ export default function Leaderboard() {
 
                     {/* Score */}
                     <span
-                      className="font-orbitron text-sm font-bold text-right"
+                      className="font-space text-sm font-light text-right"
                       style={{
-                        color: isMe ? '#4dd8e6' : 'rgba(255,255,255,0.7)',
-                        textShadow: isMe ? '0 0 8px rgba(77,216,230,0.4)' : 'none',
+                        color: isMe ? '#ffffff' : 'rgba(255,255,255,0.7)',
+                        textShadow: isMe ? '0 0 8px rgba(255,255,255,0.4)' : 'none',
                       }}
                     >
                       {row.score}
@@ -151,7 +150,7 @@ export default function Leaderboard() {
             </div>
           )}
 
-          <div className="absolute bottom-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-pink-neon/30 to-transparent" />
+          <div className="absolute bottom-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
         </div>
 
         {/* Refresh */}

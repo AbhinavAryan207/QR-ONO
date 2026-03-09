@@ -8,59 +8,46 @@ export default {
     extend: {
       fontFamily: {
         orbitron: ['Orbitron', 'sans-serif'],
-        exo: ['"Exo 2"', 'sans-serif'],
-        manrope: ['Manrope', 'sans-serif'],
+        inter: ['Inter', 'sans-serif'],
+        space: ['"Space Grotesk"', 'sans-serif'],
         cinzel: ['Cinzel', 'serif'],
         cormorant: ['"Cormorant Garamond"', 'serif'],
       },
       colors: {
         bg: {
           DEFAULT: '#000000',
-          deep: '#02030a',
-          card: '#060818',
+          deep: '#030408',
+          card: 'rgba(5, 7, 15, 0.4)',
         },
-        cyan: {
-          neon: '#4dd8e6',
-          light: '#88f0ff',
-          glow: 'rgba(0,255,235,0.8)',
-        },
-        pink: {
-          neon: '#e84393',
+        celestial: {
+          white: '#ffffff',
+          light: '#e1e5f2',
+          blue: '#1e3a8a',
+          glow: 'rgba(255, 255, 255, 0.1)',
         },
       },
       boxShadow: {
-        'neon-cyan': '0 0 15px rgba(77,216,230,0.6), 0 0 30px rgba(77,216,230,0.3)',
-        'neon-pink': '0 0 15px rgba(232,67,147,0.6), 0 0 30px rgba(232,67,147,0.3)',
+        'starlight': '0 0 15px rgba(255,255,255,0.1), 0 0 30px rgba(255,255,255,0.05)',
         'glass': '0 8px 32px rgba(0,0,0,0.4)',
       },
       animation: {
-        'glow-pulse': 'glowPulse 2s ease-in-out infinite',
-        'float': 'float 3s ease-in-out infinite',
-        'slide-up': 'slideUp 0.4s ease-out',
-        'fade-in': 'fadeIn 0.5s ease-out',
-        'scan-laser': 'scanLaser 2s ease-in-out infinite',
+        'glow-pulse': 'glowPulse 4s ease-in-out infinite',
+        'float': 'float 6s ease-in-out infinite',
+        'fade-in': 'fadeIn 1s ease-out',
+        'fade-in-slow': 'fadeIn 2s ease-out',
       },
       keyframes: {
         glowPulse: {
-          '0%, 100%': { opacity: '1' },
-          '50%': { opacity: '0.7' },
+          '0%, 100%': { opacity: '0.8' },
+          '50%': { opacity: '0.4' },
         },
         float: {
           '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-8px)' },
-        },
-        slideUp: {
-          from: { opacity: '0', transform: 'translateY(20px)' },
-          to: { opacity: '1', transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-10px)' },
         },
         fadeIn: {
-          from: { opacity: '0' },
-          to: { opacity: '1' },
-        },
-        scanLaser: {
-          '0%': { top: '8px', opacity: '1' },
-          '50%': { top: 'calc(100% - 8px)', opacity: '0.7' },
-          '100%': { top: '8px', opacity: '1' },
+          from: { opacity: '0', transform: 'translateY(10px)' },
+          to: { opacity: '1', transform: 'translateY(0)' },
         },
       },
     },

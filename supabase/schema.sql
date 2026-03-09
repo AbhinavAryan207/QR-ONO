@@ -1,5 +1,5 @@
 -- ============================================================
---  QR-ONO  |  Supabase Database Schema
+--  Onerios-Quests  |  Supabase Database Schema
 -- ============================================================
 -- Run this entire file in the Supabase SQL Editor
 -- (Dashboard → SQL Editor → New Query → Paste → Run)

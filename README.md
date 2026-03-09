@@ -1,4 +1,4 @@
-# QR-ONO — Scan. Answer. Conquer.
+# Onerios-Quests — Scan. Answer. Conquer.
 
 A cyberpunk-themed QR code scavenger-hunt quiz game built with **React + Vite**, **Supabase**, and **TailwindCSS**.
 
@@ -64,7 +64,7 @@ supabase/
 
 ```bash
 git clone <your-repo>
-cd QR-ONO
+cd Onerios-Quests
 npm install
 ```
 

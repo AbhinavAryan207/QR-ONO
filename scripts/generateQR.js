@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * QR-ONO — Batch QR Code Generator
+ * Onerios-Quests — Batch QR Code Generator
  * ==================================
  * Generates 50 unique QR code PNG images and saves them to ./qr-output/
  *
@@ -107,7 +107,7 @@ const QR_OPTIONS = {
   errorCorrectionLevel: 'H',
 }
 
-console.log(`\nQR-ONO — Generating ${TOKENS.length} QR codes`)
+console.log(`\nOnerios-Quests — Generating ${TOKENS.length} QR codes`)
 console.log(`  Base URL  : ${BASE_URL}`)
 console.log(`  Output dir: ${outputPath}\n`)
 

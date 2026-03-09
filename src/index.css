@@ -15,169 +15,64 @@
 
   body {
     background-color: #000;
-    background-image:
-      radial-gradient(ellipse at 20% 50%, rgba(77, 216, 230, 0.04) 0%, transparent 50%),
-      radial-gradient(ellipse at 80% 20%, rgba(232, 67, 147, 0.04) 0%, transparent 50%);
+    background-image: url('/celestial_bg.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
     color: #ffffff;
-    font-family: 'Manrope', sans-serif;
+    font-family: 'Inter', sans-serif;
     min-height: 100vh;
   }
 
+  /* Overlay to ensure text readability against the vivid nebula */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.6) 100%);
+    pointer-events: none;
+    z-index: -1;
+  }
+
   ::-webkit-scrollbar {
-    width: 6px;
+    width: 4px;
   }
 
   ::-webkit-scrollbar-track {
-    background: #02030a;
+    background: transparent;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #4dd8e6;
-    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
   }
 }
 
 @layer components {
-  /* Glassmorphism card */
-  .glass-card {
-    @apply bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  /* Minimalist Glassmorphism for forms */
+  .glass-card-celestial {
+    @apply bg-black/20 backdrop-blur-md border border-white/10 rounded-xl;
   }
 
-  .glass-card-cyan {
-    @apply glass-card border-cyan-neon/20;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 20px rgba(77, 216, 230, 0.08), inset 0 1px 0 rgba(77, 216, 230, 0.1);
+  /* Sleek minimalist text buttons */
+  .btn-text-ghost {
+    @apply flex items-center gap-4 text-xs tracking-[0.3em] uppercase text-white/50 hover:text-white transition-colors duration-500 cursor-pointer;
   }
 
-  .glass-card-pink {
-    @apply glass-card border-pink-neon/20;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 20px rgba(232, 67, 147, 0.08), inset 0 1px 0 rgba(232, 67, 147, 0.1);
+  /* Thin minimalist borders for form inputs */
+  .input-celestial {
+    @apply w-full px-0 py-3 bg-transparent border-b border-white/20 text-white outline-none font-inter font-light text-sm transition-colors duration-500 rounded-none;
   }
 
-  /* Neon buttons */
-  .btn-neon-cyan {
-    @apply relative px-6 py-3.5 font-manrope font-semibold text-sm tracking-widest uppercase;
-    @apply border border-cyan-neon/60 text-cyan-neon rounded-lg;
-    @apply transition-all duration-300 cursor-pointer;
-    background: rgba(77, 216, 230, 0.06);
-    overflow: hidden;
-    min-height: 48px;
-    touch-action: manipulation;
+  .input-celestial::placeholder {
+    @apply text-white/30 tracking-wide;
   }
 
-  .btn-neon-cyan:hover {
-    background: rgba(77, 216, 230, 0.15);
-    border-color: #4dd8e6;
-    box-shadow: 0 0 20px rgba(77, 216, 230, 0.4), 0 0 40px rgba(77, 216, 230, 0.2);
-    color: #88f0ff;
-    transform: translateY(-1px);
-  }
-
-  .btn-neon-cyan:active {
-    transform: translateY(0);
-  }
-
-  .btn-neon-pink {
-    @apply relative px-6 py-3.5 font-manrope font-semibold text-sm tracking-widest uppercase;
-    @apply border border-pink-neon/60 text-pink-neon rounded-lg;
-    @apply transition-all duration-300 cursor-pointer;
-    background: rgba(232, 67, 147, 0.06);
-    overflow: hidden;
-    min-height: 48px;
-    touch-action: manipulation;
-  }
-
-  .btn-neon-pink:hover {
-    background: rgba(232, 67, 147, 0.15);
-    border-color: #e84393;
-    box-shadow: 0 0 20px rgba(232, 67, 147, 0.4), 0 0 40px rgba(232, 67, 147, 0.2);
-    transform: translateY(-1px);
-  }
-
-  .btn-solid-cyan {
-    @apply relative px-6 py-3.5 font-manrope font-semibold text-sm tracking-widest uppercase;
-    @apply text-black rounded-lg transition-all duration-300 cursor-pointer;
-    background: linear-gradient(135deg, #4dd8e6, #88f0ff);
-    box-shadow: 0 0 20px rgba(77, 216, 230, 0.3);
-    min-height: 48px;
-    touch-action: manipulation;
-  }
-
-  .btn-solid-cyan:hover {
-    box-shadow: 0 0 30px rgba(77, 216, 230, 0.6), 0 0 60px rgba(77, 216, 230, 0.3);
-    transform: translateY(-2px);
-  }
-
-  .btn-solid-cyan:disabled {
-    @apply opacity-50 cursor-not-allowed;
-    transform: none;
-    box-shadow: none;
-  }
-
-  /* Input fields */
-  .input-neon {
-    @apply w-full px-4 py-3.5 rounded-lg font-manrope text-white;
-    @apply border border-white/10 bg-white/5 outline-none;
-    @apply transition-all duration-300;
-    font-size: 16px; /* prevents iOS Safari zoom on focus */
-    min-height: 48px;
-  }
-
-  .input-neon::placeholder {
-    color: rgba(255, 255, 255, 0.3);
-  }
-
-  .input-neon:focus {
-    border-color: rgba(77, 216, 230, 0.6);
-    box-shadow: 0 0 0 3px rgba(77, 216, 230, 0.1), 0 0 15px rgba(77, 216, 230, 0.15);
-    background: rgba(77, 216, 230, 0.04);
-  }
-
-  /* Neon text */
-  .text-neon-cyan {
-    color: #4dd8e6;
-    text-shadow: 0 0 10px rgba(77, 216, 230, 0.6);
-  }
-
-  .text-neon-pink {
-    color: #e84393;
-    text-shadow: 0 0 10px rgba(232, 67, 147, 0.6);
-  }
-
-  /* Grid scanline overlay */
-  .scanline-bg {
-    background-image:
-      repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 2px,
-        rgba(77, 216, 230, 0.015) 2px,
-        rgba(77, 216, 230, 0.015) 4px
-      );
-  }
-
-  /* Corner decoration */
-  .corner-decoration::before,
-  .corner-decoration::after {
-    content: '';
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    border-color: #4dd8e6;
-    border-style: solid;
-  }
-
-  .corner-decoration::before {
-    top: 0;
-    left: 0;
-    border-width: 2px 0 0 2px;
-    border-radius: 4px 0 0 0;
-  }
-
-  .corner-decoration::after {
-    bottom: 0;
-    right: 0;
-    border-width: 0 2px 2px 0;
-    border-radius: 0 0 4px 0;
+  .input-celestial:focus {
+    @apply border-white/80;
   }
 }

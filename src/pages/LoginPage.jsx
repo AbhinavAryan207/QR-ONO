@@ -32,47 +32,47 @@ export default function LoginPage() {
 
       <div className="relative w-full max-w-md animate-slide-up">
         {/* Header */}
-        <div className="text-center mb-6">
+        <div className="text-center mb-8">
           <Link to="/">
-            <h1 className="font-orbitron font-black text-3xl text-neon-cyan tracking-widest mb-2">QR-ONO</h1>
+            <h1 className="font-cinzel font-bold text-4xl text-white tracking-widest mb-2" style={{ textShadow: '0 4px 20px rgba(0,0,0,0.8), 0 0 40px rgba(255,255,255,0.4)' }}>Onerios-Quests</h1>
           </Link>
-          <p className="font-cinzel text-xs tracking-[0.3em] text-white/30 uppercase">Access Terminal</p>
+          <p className="font-inter text-[10px] tracking-[0.4em] text-white/40 uppercase">Access Terminal</p>
         </div>
 
-        <div className="glass-card-cyan relative p-6 corner-decoration">
-          <div className="absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-cyan-neon/50 to-transparent" />
+        <div className="glass-card-celestial relative p-8">
+          <div className="absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
-          <h2 className="font-cinzel text-xl text-white mb-6 text-center tracking-wide">Sign In</h2>
+          <h2 className="font-inter font-light text-xl text-white mb-8 text-center tracking-[0.2em] uppercase">Sign In</h2>
 
           {error && (
-            <div className="mb-4 px-4 py-3 rounded-lg border border-pink-neon/40 bg-pink-neon/5 text-pink-neon text-sm font-manrope">
+            <div className="mb-6 px-4 py-3 rounded-lg border border-red-500/40 bg-red-500/10 text-red-200 text-sm font-inter">
               {error}
             </div>
           )}
 
           <form onSubmit={handleLogin} className="flex flex-col gap-4">
             <div>
-              <label className="block font-manrope text-xs text-white/40 uppercase tracking-widest mb-2">Email</label>
+              <label className="block font-inter text-[10px] text-white/40 uppercase tracking-[0.2em] mb-2">Email</label>
               <input
                 type="email"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="hunter@arena.io"
-                className="input-neon"
+                className="input-celestial"
                 autoComplete="email"
               />
             </div>
 
-            <div>
-              <label className="block font-manrope text-xs text-white/40 uppercase tracking-widest mb-2">Password</label>
+            <div className="mb-4">
+              <label className="block font-inter text-[10px] text-white/40 uppercase tracking-[0.2em] mb-2">Password</label>
               <input
                 type="password"
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
-                className="input-neon"
+                className="input-celestial"
                 autoComplete="current-password"
               />
             </div>
@@ -80,22 +80,22 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="btn-solid-cyan w-full mt-2"
+              className="w-full bg-white text-black font-inter text-sm tracking-[0.2em] font-medium py-4 rounded-xl hover:bg-white/90 transition-all shadow-[0_0_20px_rgba(255,255,255,0.2)] mt-2"
             >
-              {loading ? 'Authenticating...' : 'Login'}
+              {loading ? 'AUTHENTICATING...' : 'LOGIN'}
             </button>
           </form>
 
-          <div className="mt-6 text-center">
-            <p className="font-manrope text-sm text-white/40">
+          <div className="mt-8 text-center">
+            <p className="font-inter font-light text-xs text-white/40">
               No account?{' '}
-              <Link to="/register" className="text-cyan-neon hover:text-cyan-light transition-colors underline underline-offset-2">
+              <Link to="/register" className="text-white hover:text-white/80 transition-colors underline underline-offset-4">
                 Register here
               </Link>
             </p>
           </div>
 
-          <div className="absolute bottom-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-pink-neon/30 to-transparent" />
+          <div className="absolute bottom-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
         </div>
       </div>
     </div>

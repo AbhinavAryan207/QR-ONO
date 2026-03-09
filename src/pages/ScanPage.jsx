@@ -1,4 +1,4 @@
-﻿import { useEffect, useRef, useState, useCallback } from 'react'
+import { useEffect, useRef, useState, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import jsQR from 'jsqr'
 import { supabase } from '../supabase/supabaseClient'
@@ -151,7 +151,7 @@ export default function ScanPage() {
       return
     }
 
-    setErrorMsg(`QR code not recognized as a QR-ONO code.\n\nScanned text:\n"${text}"`)
+    setErrorMsg(`QR code not recognized as a Onerios-Quests code.\n\nScanned text:\n"${text}"`)
     setPhase('error')
   }
 
@@ -186,7 +186,7 @@ export default function ScanPage() {
 
       {/* Header */}
       <div className="text-center mb-6 w-full max-w-sm">
-        <span className="font-orbitron text-xs tracking-[0.3em] text-white/30 uppercase block mb-1">QR-ONO</span>
+        <span className="font-orbitron text-xs tracking-[0.3em] text-white/30 uppercase block mb-1">Onerios-Quests</span>
         <h1 className="font-cinzel text-2xl text-white">Scan QR Code</h1>
         <p className="font-manrope text-sm text-white/40 mt-1">Point your camera at an event QR code</p>
       </div>
